@@ -1,6 +1,9 @@
 # Gradle
 .gradle/
 build/
+
+# Hytale Server JAR (too large for GitHub, users must provide their own)
+libs/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
