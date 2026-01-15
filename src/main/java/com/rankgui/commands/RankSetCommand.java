@@ -38,7 +38,7 @@ public class RankSetCommand extends AbstractAsyncCommand {
             var rankManager = RankGUIPlugin.getInstance().getRankManager();
 
             if (!rankManager.hasRank(rankName)) {
-                context.sender().sendMessage(Message.raw("§cRank '" + rankName + "' does not exist!"));
+                context.sender().sendMessage(Message.parse("§cRank '" + rankName + "' does not exist!"));
                 return;
             }
 
@@ -46,7 +46,7 @@ public class RankSetCommand extends AbstractAsyncCommand {
             rankManager.save();
 
             context.sender()
-                    .sendMessage(Message.raw("§aAssigned rank '" + rankName + "' to player '" + playerName + "'"));
+                    .sendMessage(Message.parse("§aAssigned rank '" + rankName + "' to player '" + playerName + "'"));
         });
     }
 }

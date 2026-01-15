@@ -35,14 +35,14 @@ public class RankInfoCommand extends AbstractAsyncCommand {
             var rankManager = RankGUIPlugin.getInstance().getRankManager();
 
             if (!rankManager.hasRank(name)) {
-                context.sender().sendMessage(Message.raw("§cRank '" + name + "' does not exist!"));
+                context.sender().sendMessage(Message.parse("§cRank '" + name + "' does not exist!"));
                 return;
             }
 
             Rank rank = rankManager.getRank(name);
-            context.sender().sendMessage(Message.raw("§6=== Rank: " + name + " ==="));
-            context.sender().sendMessage(Message.raw("§7Prefix: " + rank.getPrefix()));
-            context.sender().sendMessage(Message.raw("§7Permissions: " + String.join(", ", rank.getPermissions())));
+            context.sender().sendMessage(Message.parse("§6=== Rank: " + name + " ==="));
+            context.sender().sendMessage(Message.parse("§7Prefix: " + rank.getPrefix()));
+            context.sender().sendMessage(Message.parse("§7Permissions: " + String.join(", ", rank.getPermissions())));
         });
     }
 }

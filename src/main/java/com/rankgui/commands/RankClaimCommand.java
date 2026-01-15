@@ -28,13 +28,13 @@ public class RankClaimCommand extends AbstractAsyncCommand {
 
             // Check if any admin exists
             if (rankManager.hasAnyAdmin()) {
-                context.sender().sendMessage(Message.raw("§cAn admin already exists. You cannot claim ownership."));
+                context.sender().sendMessage(Message.parse("§cAn admin already exists. You cannot claim ownership."));
                 return;
             }
 
             // Get player name from context
             if (!context.isPlayer()) {
-                context.sender().sendMessage(Message.raw("§cOnly players can claim ownership."));
+                context.sender().sendMessage(Message.parse("§cOnly players can claim ownership."));
                 return;
             }
 
@@ -54,8 +54,8 @@ public class RankClaimCommand extends AbstractAsyncCommand {
             // Promote to Owner
             rankManager.promoteToOwner(playerName);
 
-            context.sender().sendMessage(Message.raw("§a§lCongratulations! §r§aYou are now the server Owner!"));
-            context.sender().sendMessage(Message.raw("§7You have full access to all rank management commands."));
+            context.sender().sendMessage(Message.parse("§a§lCongratulations! §r§aYou are now the server Owner!"));
+            context.sender().sendMessage(Message.parse("§7You have full access to all rank management commands."));
 
             System.err.println("[RankGUI] " + playerName + " claimed Owner rank (first admin)");
         });
