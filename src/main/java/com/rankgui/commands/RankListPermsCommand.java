@@ -47,7 +47,13 @@ public class RankListPermsCommand extends AbstractAsyncCommand {
             context.sender().sendMessage(Message.raw("  chat.color - Use colors in chat").color("gray"));
             context.sender().sendMessage(Message.raw("  chat.broadcast - Server-wide announcements").color("gray"));
 
-            context.sender().sendMessage(Message.raw("Tip: You can create custom permissions too!").color("green"));
+            context.sender().sendMessage(Message.raw("--- Custom Permissions ---").color("yellow"));
+            context.sender()
+                    .sendMessage(Message.raw("  You can create any permission using dot notation:").color("gray"));
+            context.sender().sendMessage(Message.raw("  Example: /rank addperm VIP vip.kit").color("white"));
+            context.sender().sendMessage(Message.raw("  Example: /rank addperm Admin my.custom.perm").color("white"));
+            context.sender()
+                    .sendMessage(Message.raw("  Other plugins can check these with hasPermission()").color("gray"));
         });
     }
 }
