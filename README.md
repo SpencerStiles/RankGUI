@@ -1,37 +1,72 @@
-# Hytale Plugin Template
+# RankGUI - Hytale Rank Management Plugin
 
-A minimal, ready-to-use template for creating Hytale plugins with modern build tools and automated testing.
-
-> **✨ Builds immediately without any changes!** Clone and run `./gradlew shadowJar` to get a working plugin JAR.
+A comprehensive rank and permission management plugin for Hytale servers.
 
 ## Features
 
-✅ **Modern Build System** - Gradle with Kotlin DSL  
-✅ **Automated Testing** - Custom Gradle plugin for one-command server testing  
-✅ **Java 25** - Latest Java features  
-✅ **ShadowJar** - Automatic dependency bundling  
-✅ **CI/CD Ready** - GitHub Actions workflow included  
-✅ **Minimal Structure** - Only essential files, write your own code  
+- **Rank Management** - Create, delete, and configure ranks
+- **Permission System** - Assign permissions to ranks
+- **Priority Levels** - Control rank hierarchy with numeric priorities
+- **Player Assignments** - Assign ranks to players persistently
+- **Persistent Storage** - All data saved to JSON files
+- **First-Admin Claim** - First user can claim Owner rank
 
----
+## Installation
 
-## Quick Start
+1. Download `RankGUI-1.0.0.jar`
+2. Copy to `%appdata%\Hytale\UserData\Mods\`
+3. Launch Hytale and load a world
+4. Use `/rank claim` to become the first admin
 
-### Prerequisites
+## Commands
 
-- **Java 25 JDK** - [Download here](https://www.oracle.com/java/technologies/downloads/)
-- **IntelliJ IDEA** - [Download here](https://www.jetbrains.com/idea/download/) (Community Edition is fine)
-- **Git** - [Download here](https://git-scm.com/)
+| Command | Description |
+|---------|-------------|
+| `/rank help` | Show all commands |
+| `/rank list` | List all ranks (sorted by priority) |
+| `/rank info <name>` | Show details about a rank |
+| `/rank create <name> [prefix]` | Create a new rank |
+| `/rank delete <name>` | Delete a rank |
+| `/rank set <player> <rank>` | Assign a rank to a player |
+| `/rank addperm <rank> <perm>` | Add permission to a rank |
+| `/rank setpriority <rank> <num>` | Set rank priority level |
+| `/rank myrank` | Show your current rank |
+| `/rank claim` | Claim Owner rank (first admin only) |
 
-### 1. Clone or Download
+## Default Ranks
+
+The plugin creates these ranks automatically:
+
+| Rank | Priority | Prefix | Permissions |
+|------|----------|--------|-------------|
+| Owner | 100 | [Owner] | All Permissions |
+| Admin | 90 | [Admin] | Rank Admin, Server Admin |
+| Moderator | 50 | [Mod] | Server Moderate |
+| VIP | 20 | [VIP] | None |
+| Default | 0 | (none) | None |
+
+## Data Storage
+
+Data is stored in JSON files in your world's mods folder:
+
+- `ranks.json` - Rank definitions
+- `player_ranks.json` - Player-to-rank assignments
+
+## Building from Source
 
 ```bash
-git clone https://github.com/yourusername/hytale-plugin-template.git
-cd hytale-plugin-template
+./gradlew shadowJar
 ```
 
-**The template builds immediately without any changes!**  
-You can customize it later when you're ready to develop your plugin.
+Output: `build/libs/RankGUI-1.0.0.jar`
+
+## License
+
+MIT License - Free to use and modify.
+
+## Author
+
+Created by Spencer
 
 ### 2. Build Immediately (No Changes Needed!)
 

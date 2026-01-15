@@ -30,6 +30,10 @@ public class RankHelpCommand extends AbstractAsyncCommand {
             context.sender().sendMessage(Message.raw("/rank delete <name> - Delete a rank").color("gray"));
             context.sender()
                     .sendMessage(Message.raw("/rank set <player> <rank> - Assign a rank to a player").color("gray"));
+            context.sender()
+                    .sendMessage(Message.raw("/rank addperm <rank> <perm> - Add permission to a rank").color("gray"));
+            context.sender()
+                    .sendMessage(Message.raw("/rank setpriority <rank> <num> - Set rank priority").color("gray"));
             context.sender().sendMessage(Message.raw("/rank myrank - Show your current rank").color("gray"));
             context.sender()
                     .sendMessage(Message.raw("/rank claim - Claim Owner rank (first admin only)").color("gray"));

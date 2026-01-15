@@ -39,18 +39,8 @@ public class RankClaimCommand extends AbstractAsyncCommand {
                 return;
             }
 
-            // Get player name - for now use a placeholder since we need to find the right
-            // API
-            String playerName = "Player"; // Will be updated with actual player name API
-            try {
-                // Try to get the player's name from the sender
-                var playerRef = context.senderAsPlayerRef();
-                if (playerRef != null) {
-                    playerName = playerRef.toString(); // Best effort
-                }
-            } catch (Exception e) {
-                // Fallback
-            }
+            // Get player name from sender
+            String playerName = context.sender().getDisplayName();
 
             // Promote to Owner
             rankManager.promoteToOwner(playerName);

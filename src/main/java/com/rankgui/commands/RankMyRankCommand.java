@@ -33,16 +33,8 @@ public class RankMyRankCommand extends AbstractAsyncCommand {
 
             var rankManager = RankGUIPlugin.getInstance().getRankManager();
 
-            // Get player name - best effort
-            String playerName = "Player";
-            try {
-                var playerRef = context.senderAsPlayerRef();
-                if (playerRef != null) {
-                    playerName = playerRef.toString();
-                }
-            } catch (Exception e) {
-                // Fallback
-            }
+            // Get player name from sender
+            String playerName = context.sender().getDisplayName();
 
             String rankName = rankManager.getPlayerRank(playerName);
             Rank rank = rankManager.getRank(rankName);
