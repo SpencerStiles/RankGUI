@@ -7,6 +7,7 @@ import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes;
 import com.hypixel.hytale.server.core.command.system.arguments.system.RequiredArg;
 import com.rankgui.RankGUIPlugin;
 import com.rankgui.storage.Rank;
+import com.rankgui.util.PermissionFormatter;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -42,8 +43,9 @@ public class RankInfoCommand extends AbstractAsyncCommand {
             Rank rank = rankManager.getRank(name);
             context.sender().sendMessage(Message.raw("=== Rank: " + name + " ===").color("gold"));
             context.sender().sendMessage(Message.raw("Prefix: " + rank.getPrefix()).color("gray"));
-            context.sender()
-                    .sendMessage(Message.raw("Permissions: " + String.join(", ", rank.getPermissions())).color("gray"));
+            context.sender().sendMessage(Message.raw("Priority: " + rank.getPriority()).color("gray"));
+            context.sender().sendMessage(
+                    Message.raw("Permissions: " + PermissionFormatter.formatList(rank.getPermissions())).color("gray"));
         });
     }
 }

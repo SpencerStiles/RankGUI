@@ -4,8 +4,10 @@ import com.hypixel.hytale.server.core.command.system.CommandContext;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncCommand;
 import com.rankgui.RankGUIPlugin;
+import com.rankgui.storage.Rank;
 import com.rankgui.storage.RankManager;
 
+import java.util.Comparator;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -34,10 +36,14 @@ public class RankListCommand extends AbstractAsyncCommand {
                         .sendMessage(Message.raw("No ranks configured. Use /rank create <name> to create one.")
                                 .color("gray"));
             } else {
-                for (String rankName : rankManager.getRanks().keySet()) {
-                    var rank = rankManager.getRank(rankName);
-                    context.sender().sendMessage(Message.raw(rankName + " - " + rank.getPrefix()).color("green"));
-                }
+                // Sort ranks by priority (highest first)
+                rankManager.getRanks().values().stream()
+                        .sorted(Comparator.comparingInt(Rank::getPriority).reversed())
+                        .forEach(rank -> {
+                            String display = rank.getName() + " - " + rank.getPrefix() + " (Priority: "
+                                    + rank.getPriority() + ")";
+                            context.sender().sendMessage(Message.raw(display).color("green"));
+                        });
             }
         });
     }
