@@ -17,7 +17,7 @@ public class RankCommand extends AbstractCommandCollection {
         addSubCommand(new RankSetCommand());
         addSubCommand(new RankInfoCommand());
 
-        // Require base permission
-        requirePermission("rankgui.admin");
+        // TODO: Re-enable permission for production
+        // requirePermission("rankgui.admin");
     }
 }
