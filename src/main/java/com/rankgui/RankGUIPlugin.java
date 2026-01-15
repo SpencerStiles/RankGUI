@@ -38,18 +38,18 @@ public class RankGUIPlugin extends JavaPlugin {
 
     @Override
     public CompletableFuture<Void> preLoad() {
-        return super.preLoad().thenRun(() -> {
-            System.err.println("[RankGUI] preLoad - Initializing...");
+        System.err.println("[RankGUI] preLoad - Initializing...");
 
-            // Initialize rank manager with data directory
-            this.rankManager = new RankManager(getDataDirectory());
+        // Initialize rank manager with data directory
+        this.rankManager = new RankManager(getDataDirectory());
 
-            // Register commands
-            getCommandRegistry().registerCommand(new RankCommand());
+        // Register commands
+        getCommandRegistry().registerCommand(new RankCommand());
 
-            System.err.println("[RankGUI] Plugin loaded successfully!");
-            System.err.println("[RankGUI] Loaded " + rankManager.getRanks().size() + " ranks");
-        });
+        System.err.println("[RankGUI] Plugin loaded successfully!");
+        System.err.println("[RankGUI] Loaded " + rankManager.getRanks().size() + " ranks");
+
+        return CompletableFuture.completedFuture(null);
     }
 
     public static RankGUIPlugin getInstance() {
