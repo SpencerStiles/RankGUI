@@ -83,31 +83,31 @@ public class RankManager {
 
     private void createDefaultRanks() {
         // Owner rank
-        Rank owner = new Rank("Owner", "§4[Owner]");
+        Rank owner = new Rank("Owner", "[Owner]");
         owner.setPriority(100);
         owner.addPermission("*");
         ranks.put("Owner", owner);
 
         // Admin rank
-        Rank admin = new Rank("Admin", "§c[Admin]");
+        Rank admin = new Rank("Admin", "[Admin]");
         admin.setPriority(90);
         admin.addPermission("rankgui.admin");
         admin.addPermission("server.admin");
         ranks.put("Admin", admin);
 
         // Moderator rank
-        Rank mod = new Rank("Moderator", "§9[Mod]");
+        Rank mod = new Rank("Moderator", "[Mod]");
         mod.setPriority(50);
         mod.addPermission("server.moderate");
         ranks.put("Moderator", mod);
 
         // VIP rank
-        Rank vip = new Rank("VIP", "§a[VIP]");
+        Rank vip = new Rank("VIP", "[VIP]");
         vip.setPriority(20);
         ranks.put("VIP", vip);
 
         // Default rank
-        Rank defaultRank = new Rank("Default", "§7");
+        Rank defaultRank = new Rank("Default", "");
         defaultRank.setPriority(0);
         ranks.put("Default", defaultRank);
     }
