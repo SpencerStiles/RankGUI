@@ -21,4 +21,9 @@ public class RankCommand extends AbstractCommandCollection {
         // TODO: Re-enable permission for production
         // requirePermission("rankgui.admin");
     }
+
+    @Override
+    protected boolean canGeneratePermission() {
+        return false; // Disable auto-generated permission
+    }
 }

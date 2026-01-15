@@ -25,6 +25,11 @@ public class RankSetCommand extends AbstractAsyncCommand {
     }
 
     @Override
+    protected boolean canGeneratePermission() {
+        return false;
+    }
+
+    @Override
     protected CompletableFuture<Void> executeAsync(CommandContext context) {
         return CompletableFuture.runAsync(() -> {
             String playerName = playerArg.get(context);

@@ -18,6 +18,11 @@ public class RankListCommand extends AbstractAsyncCommand {
     }
 
     @Override
+    protected boolean canGeneratePermission() {
+        return false;
+    }
+
+    @Override
     protected CompletableFuture<Void> executeAsync(CommandContext context) {
         return CompletableFuture.runAsync(() -> {
             RankManager rankManager = RankGUIPlugin.getInstance().getRankManager();
