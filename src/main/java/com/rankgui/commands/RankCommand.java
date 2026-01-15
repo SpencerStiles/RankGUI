@@ -21,6 +21,7 @@ public class RankCommand extends AbstractCommandCollection {
         addSubCommand(new RankMyRankCommand());
         addSubCommand(new RankAddPermCommand());
         addSubCommand(new RankSetPriorityCommand());
+        addSubCommand(new RankListPermsCommand());
 
         // TODO: Re-enable permission for production
         // requirePermission("rankgui.admin");
