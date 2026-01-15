@@ -5,6 +5,7 @@ import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.rankgui.commands.RankCommand;
 import com.rankgui.storage.RankManager;
 import javax.annotation.Nonnull;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * RankGUI - A permission and rank management plugin for Hytale servers.
@@ -32,17 +33,23 @@ public class RankGUIPlugin extends JavaPlugin {
     public RankGUIPlugin(@Nonnull JavaPluginInit init) {
         super(init);
         instance = this;
+        System.err.println("[RankGUI] Constructor called");
+    }
 
-        System.err.println("[RankGUI] Initializing...");
+    @Override
+    public CompletableFuture<Void> preLoad() {
+        return super.preLoad().thenRun(() -> {
+            System.err.println("[RankGUI] preLoad - Initializing...");
 
-        // Initialize rank manager with data directory
-        this.rankManager = new RankManager(getDataDirectory());
+            // Initialize rank manager with data directory
+            this.rankManager = new RankManager(getDataDirectory());
 
-        // Register commands
-        getCommandRegistry().registerCommand(new RankCommand());
+            // Register commands
+            getCommandRegistry().registerCommand(new RankCommand());
 
-        System.err.println("[RankGUI] Plugin loaded successfully!");
-        System.err.println("[RankGUI] Loaded " + rankManager.getRanks().size() + " ranks");
+            System.err.println("[RankGUI] Plugin loaded successfully!");
+            System.err.println("[RankGUI] Loaded " + rankManager.getRanks().size() + " ranks");
+        });
     }
 
     public static RankGUIPlugin getInstance() {
