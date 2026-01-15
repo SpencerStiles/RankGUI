@@ -1,0 +1,19 @@
+{
+  "Group": "RankGUI",
+  "Name": "RankGUI",
+  "Version": "1.0.0",
+  "Description": "Permission and rank management plugin for Hytale servers",
+  "Authors": [
+    {
+      "Name": "Spencer",
+      "Email": "",
+      "Url": ""
+    }
+  ],
+  "Website": "",
+  "Main": "com.rankgui.RankGUIPlugin",
+  "ServerVersion": "*",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "DisabledByDefault": false
+}
