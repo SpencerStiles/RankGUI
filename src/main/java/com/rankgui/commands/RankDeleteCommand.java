@@ -34,14 +34,14 @@ public class RankDeleteCommand extends AbstractAsyncCommand {
             var rankManager = RankGUIPlugin.getInstance().getRankManager();
 
             if (!rankManager.hasRank(name)) {
-                context.sender().sendMessage(Message.parse("§cRank '" + name + "' does not exist!"));
+                context.sender().sendMessage(Message.raw("Rank '" + name + "' does not exist!").color("red"));
                 return;
             }
 
             rankManager.removeRank(name);
             rankManager.save();
 
-            context.sender().sendMessage(Message.parse("§aSuccessfully deleted rank: " + name));
+            context.sender().sendMessage(Message.raw("Successfully deleted rank: " + name).color("green"));
         });
     }
 }

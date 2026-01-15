@@ -27,15 +27,16 @@ public class RankListCommand extends AbstractAsyncCommand {
         return CompletableFuture.runAsync(() -> {
             RankManager rankManager = RankGUIPlugin.getInstance().getRankManager();
 
-            context.sender().sendMessage(Message.parse("§6=== Available Ranks ==="));
+            context.sender().sendMessage(Message.raw("=== Available Ranks ===").color("gold"));
 
             if (rankManager.getRanks().isEmpty()) {
                 context.sender()
-                        .sendMessage(Message.parse("§7No ranks configured. Use /rank create <name> to create one."));
+                        .sendMessage(Message.raw("No ranks configured. Use /rank create <name> to create one.")
+                                .color("gray"));
             } else {
                 for (String rankName : rankManager.getRanks().keySet()) {
                     var rank = rankManager.getRank(rankName);
-                    context.sender().sendMessage(Message.parse("§a" + rankName + " §7- " + rank.getPrefix()));
+                    context.sender().sendMessage(Message.raw(rankName + " - " + rank.getPrefix()).color("green"));
                 }
             }
         });

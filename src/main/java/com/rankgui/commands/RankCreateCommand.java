@@ -44,7 +44,7 @@ public class RankCreateCommand extends AbstractAsyncCommand {
             var rankManager = RankGUIPlugin.getInstance().getRankManager();
 
             if (rankManager.hasRank(name)) {
-                context.sender().sendMessage(Message.parse("§cRank '" + name + "' already exists!"));
+                context.sender().sendMessage(Message.raw("Rank '" + name + "' already exists!").color("red"));
                 return;
             }
 
@@ -52,7 +52,8 @@ public class RankCreateCommand extends AbstractAsyncCommand {
             rankManager.addRank(rank);
             rankManager.save();
 
-            context.sender().sendMessage(Message.parse("§aSuccessfully created rank: " + name + " " + prefix));
+            context.sender()
+                    .sendMessage(Message.raw("Successfully created rank: " + name + " " + prefix).color("green"));
         });
     }
 }
