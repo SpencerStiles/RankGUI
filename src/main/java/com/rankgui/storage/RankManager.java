@@ -146,4 +146,24 @@ public class RankManager {
         String rankName = getPlayerRank(playerName);
         return ranks.getOrDefault(rankName, ranks.get("Default"));
     }
+
+    /**
+     * Check if any player has an admin-level rank (Owner or Admin).
+     */
+    public boolean hasAnyAdmin() {
+        for (String rankName : playerRanks.values()) {
+            if (rankName.equals("Owner") || rankName.equals("Admin")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Promote a player to Owner rank. Used for first-user claim.
+     */
+    public void promoteToOwner(String playerName) {
+        playerRanks.put(playerName, "Owner");
+        save();
+    }
 }
