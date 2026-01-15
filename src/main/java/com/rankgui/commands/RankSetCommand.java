@@ -1,6 +1,7 @@
 package com.rankgui.commands;
 
 import com.hypixel.hytale.server.core.command.system.CommandContext;
+import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncCommand;
 import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes;
 import com.hypixel.hytale.server.core.command.system.arguments.system.RequiredArg;
@@ -32,14 +33,15 @@ public class RankSetCommand extends AbstractAsyncCommand {
             var rankManager = RankGUIPlugin.getInstance().getRankManager();
 
             if (!rankManager.hasRank(rankName)) {
-                context.sender().sendMessage("§cRank '" + rankName + "' does not exist!");
+                context.sender().sendMessage(Message.raw("§cRank '" + rankName + "' does not exist!"));
                 return;
             }
 
             rankManager.setPlayerRank(playerName, rankName);
             rankManager.save();
 
-            context.sender().sendMessage("§aAssigned rank '" + rankName + "' to player '" + playerName + "'");
+            context.sender()
+                    .sendMessage(Message.raw("§aAssigned rank '" + rankName + "' to player '" + playerName + "'"));
         });
     }
 }

@@ -1,6 +1,7 @@
 package com.rankgui.commands;
 
 import com.hypixel.hytale.server.core.command.system.CommandContext;
+import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncCommand;
 import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes;
 import com.hypixel.hytale.server.core.command.system.arguments.system.RequiredArg;
@@ -28,14 +29,14 @@ public class RankDeleteCommand extends AbstractAsyncCommand {
             var rankManager = RankGUIPlugin.getInstance().getRankManager();
 
             if (!rankManager.hasRank(name)) {
-                context.sender().sendMessage("§cRank '" + name + "' does not exist!");
+                context.sender().sendMessage(Message.raw("§cRank '" + name + "' does not exist!"));
                 return;
             }
 
             rankManager.removeRank(name);
             rankManager.save();
 
-            context.sender().sendMessage("§aSuccessfully deleted rank: " + name);
+            context.sender().sendMessage(Message.raw("§aSuccessfully deleted rank: " + name));
         });
     }
 }

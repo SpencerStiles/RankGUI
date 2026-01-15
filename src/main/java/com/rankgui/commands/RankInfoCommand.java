@@ -1,6 +1,7 @@
 package com.rankgui.commands;
 
 import com.hypixel.hytale.server.core.command.system.CommandContext;
+import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncCommand;
 import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes;
 import com.hypixel.hytale.server.core.command.system.arguments.system.RequiredArg;
@@ -29,14 +30,14 @@ public class RankInfoCommand extends AbstractAsyncCommand {
             var rankManager = RankGUIPlugin.getInstance().getRankManager();
 
             if (!rankManager.hasRank(name)) {
-                context.sender().sendMessage("§cRank '" + name + "' does not exist!");
+                context.sender().sendMessage(Message.raw("§cRank '" + name + "' does not exist!"));
                 return;
             }
 
             Rank rank = rankManager.getRank(name);
-            context.sender().sendMessage("§6=== Rank: " + name + " ===");
-            context.sender().sendMessage("§7Prefix: " + rank.getPrefix());
-            context.sender().sendMessage("§7Permissions: " + String.join(", ", rank.getPermissions()));
+            context.sender().sendMessage(Message.raw("§6=== Rank: " + name + " ==="));
+            context.sender().sendMessage(Message.raw("§7Prefix: " + rank.getPrefix()));
+            context.sender().sendMessage(Message.raw("§7Permissions: " + String.join(", ", rank.getPermissions())));
         });
     }
 }
