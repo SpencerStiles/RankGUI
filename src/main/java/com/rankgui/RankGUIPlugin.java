@@ -5,7 +5,6 @@ import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.rankgui.commands.RankCommand;
 import com.rankgui.storage.RankManager;
 import javax.annotation.Nonnull;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * RankGUI - A permission and rank management plugin for Hytale servers.
@@ -37,8 +36,8 @@ public class RankGUIPlugin extends JavaPlugin {
     }
 
     @Override
-    public CompletableFuture<Void> preLoad() {
-        System.err.println("[RankGUI] preLoad - Initializing...");
+    protected void setup() {
+        System.err.println("[RankGUI] setup - Initializing...");
 
         // Initialize rank manager with data directory
         this.rankManager = new RankManager(getDataDirectory());
@@ -48,8 +47,6 @@ public class RankGUIPlugin extends JavaPlugin {
 
         System.err.println("[RankGUI] Plugin loaded successfully!");
         System.err.println("[RankGUI] Loaded " + rankManager.getRanks().size() + " ranks");
-
-        return CompletableFuture.completedFuture(null);
     }
 
     public static RankGUIPlugin getInstance() {
